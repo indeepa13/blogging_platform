@@ -1,13 +1,12 @@
 package edu.icet.ecom.model.dto;
 
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Timestamp;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostDTO {
@@ -15,7 +14,7 @@ public class PostDTO {
     private int id;
     private String title;
     private String content;
-    private String text;
+    private String tags;
     private String category;
     private int  commentsCount;
     private Timestamp createdAt;

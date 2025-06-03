@@ -1,26 +1,33 @@
 package edu.icet.ecom.model.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Table;
+import lombok.*;
 
 import java.sql.Timestamp;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="blog_posts")
+
 public class PostEntity {
     @Id
     private int id;
     private String title;
     private String content;
-    private String text;
+    private String tags;
     private String category;
+
+    @Column(name = "comments_count")
     private int  commentsCount;
+
     private Timestamp createdAt;
+    @Column(name = "updated_at")
     private Timestamp updateAt;
     private String imageUrl;
 

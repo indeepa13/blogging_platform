@@ -4,25 +4,34 @@ import edu.icet.ecom.model.dto.PostDTO;
 import edu.icet.ecom.service.PostService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin
-@RequestMapping(value ="api/blogs" )
+
 public class PostController {
     @Autowired
-    private PostService postService;
+     PostService postService;
 
-    //Get all blogs
-    @GetMapping("/createblog")
-    public List<PostDTO> getAllBlogs(){
-        return PostService.getAllPosts();
+    @GetMapping("/get-all-posts")
+    public List<PostDTO> getAllPosts(){
+        return postService.getAllPosts();
     }
+    @PostMapping("/add")
+    public void createPost(@RequestBody PostDTO postDTO){
+        postService.createPost(postDTO);
+    }
+    @PutMapping("/update")
+    public void updatePost(@RequestBody PostDTO postDTO){
+        postService.updatePost(postDTO);
+    }
+    @DeleteMapping("delete/{id}")
+    public void deletePost(@PathVariable Long id){
+        postService.deletePost(id);
+    }
+
+
 
 
 }
